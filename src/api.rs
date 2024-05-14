@@ -30,7 +30,8 @@ async fn call_openai_api(chat_request: &ChatRequest) -> Result<String, Box<dyn E
         vec![
             chat_completion::ChatCompletionMessage {
                 role: MessageRole::system,
-                content: Content::Text("You are a helpful assistant.".to_string()),
+                // TODO: Change this to be more dynamic
+                content: Content::Text("You are a helpful assistant!".to_string()),
                 name: None,
             },
             chat_completion::ChatCompletionMessage {
