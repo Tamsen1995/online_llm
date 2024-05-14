@@ -6,7 +6,7 @@ pub struct ChatRequest {
     pub messages: Vec<Message>,
     pub query: Option<String>,
 }
-// 
+
 #[derive(Deserialize)]
 pub struct Message {
     pub role: String,
