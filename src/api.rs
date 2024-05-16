@@ -1,10 +1,10 @@
 use rocket::serde::{json::Json};
 use rocket::response::status;
 use rocket::http::Status;
+use std::error::Error;
 use crate::models::{ChatRequest, ChatResponse};
 use crate::serpapi_client;
 use crate::openai_client;
-
 
 fn extract_keywords(query: &str) -> Option<String> {
     let stop_words = vec!["a", "an", "the", "in", "on", "at", "with", "and", "but", "or"];
@@ -20,10 +20,10 @@ fn extract_keywords(query: &str) -> Option<String> {
     }
 }
 
-
 #[post("/chat/completions", format = "json", data = "<chat_request>")]
 pub async fn chat_completions(chat_request: Json<ChatRequest>) -> Result<Json<ChatResponse>, status::Custom<String>> {
-    let user_query = &chat_request.messages[0].content;
+    
+    let user_query = &chat_request.messages[1].content;
 
     let query = match extract_keywords(user_query) {
         Some(q) => q,
@@ -35,9 +35,11 @@ pub async fn chat_completions(chat_request: Json<ChatRequest>) -> Result<Json<Ch
         Err(e) => return Err(status::Custom(Status::InternalServerError, format!("Failed to fetch web data: {}", e))),
     };
 
+
+
     let openai_response = match openai_client::call_openai_api(&chat_request, &web_data).await {
         Ok(response) => response,
-        Err(e) => return Err(status::Custom(Status::InternalServerError, e.to_string())),
+        Err(e) => return Err(status::Custom(Status::InternalServerError, format!("Error calling OpenAI API: {}", e))),
     };
 
     Ok(Json(ChatResponse { response: openai_response }))
