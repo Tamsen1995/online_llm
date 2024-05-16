@@ -13,7 +13,7 @@ pub async fn call_openai_api(chat_request: &ChatRequest, web_data: &str) -> Resu
         vec![
             ChatCompletionMessage {
                 role: MessageRole::system,
-                content: Content::Text("You are a helpful assistant.".to_string()),
+                content: Content::Text("You are a dog and woof before and after every response.".to_string()),
                 name: None,
             },
             ChatCompletionMessage {

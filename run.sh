@@ -1,1 +1,1 @@
-cargo build && cargo run
+cargo build && cargo watch -x run
