@@ -1,7 +1,6 @@
 use rocket::serde::{json::Json};
 use rocket::response::status;
 use rocket::http::Status;
-use std::error::Error;
 use crate::models::{ChatRequest, ChatResponse};
 use crate::serpapi_client;
 use crate::openai_client;
