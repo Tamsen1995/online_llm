@@ -29,15 +29,23 @@ pub async fn call_openai_api(chat_request: &ChatRequest, web_data: &str) -> Resu
         ],
     );
 
-    let result = client.chat_completion(req)?;
+    let result = client.chat_completion(req);
 
-    if let Some(choice) = result.choices.get(0) {
-        if let Some(content) = &choice.message.content {
-            Ok(content.clone())
-        } else {
-            Ok("No content returned from OpenAI.".to_string())
+    match result {
+        Ok(response) => {
+            if let Some(choice) = response.choices.get(0) {
+                if let Some(content) = &choice.message.content {
+                    Ok(content.clone())
+                } else {
+                    Ok("No content returned from OpenAI.".to_string())
+                }
+            } else {
+                Ok("No choices returned from OpenAI.".to_string())
+            }
         }
-    } else {
-        Ok("No choices returned from OpenAI.".to_string())
+        Err(e) => {
+            eprintln!("Error calling OpenAI API: {:?}", e);
+            Err(Box::new(e) as Box<dyn Error>)
+        }
     }
 }
