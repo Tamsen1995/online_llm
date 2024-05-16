@@ -83,13 +83,6 @@ online_llm/
      ```
    - You should see `Rocket has launched from http://0.0.0.0:8000`.
 
-## Deployment
-
-### Prerequisites
-
-- A cloud service provider (e.g., AWS, DigitalOcean, Google Cloud, Azure)
-- Docker installed on the server
-
 ## Health Check
 
 The application includes a health check endpoint to monitor its status. The health check endpoint is `/health` and can be used to verify that the application is running correctly.
