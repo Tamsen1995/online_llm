@@ -9,16 +9,16 @@ pub async fn call_openai_api(chat_request: &ChatRequest, web_data: &str) -> Resu
     let client = Client::new(api_key);
 
     let req = ChatCompletionRequest::new(
-        "gpt-3.5-turbo".to_string(),
+        chat_request.model.clone(),
         vec![
             ChatCompletionMessage {
                 role: MessageRole::system,
-                content: Content::Text("You are a dog and woof before and after every response.".to_string()),
+                content: Content::Text(chat_request.messages[0].content.clone()),
                 name: None,
             },
             ChatCompletionMessage {
                 role: MessageRole::user,
-                content: Content::Text(chat_request.messages[0].content.clone()),
+                content: Content::Text(chat_request.messages[1].content.clone()),
                 name: None,
             },
             ChatCompletionMessage {
