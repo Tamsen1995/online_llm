@@ -2,11 +2,14 @@
 
 mod api;
 mod models;
+mod serpapi_client;
+mod openai_client;
+mod config;
 
-use dotenv::dotenv;
+use config::init;
 
 #[launch]
 fn rocket() -> _ {
-    dotenv().ok();
+    init();
     rocket::build().mount("/", routes![api::chat_completions])
 }
