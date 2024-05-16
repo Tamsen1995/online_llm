@@ -8,8 +8,15 @@ mod config;
 
 use config::init;
 
+#[get("/health")]
+fn health_check() -> &'static str {
+    println!("OK");
+    "OK"
+}
+
 #[launch]
 fn rocket() -> _ {
     init();
-    rocket::build().mount("/", routes![api::chat_completions])
+    rocket::build()
+        .mount("/", routes![api::chat_completions, health_check])
 }
