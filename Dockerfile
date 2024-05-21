@@ -13,8 +13,14 @@ COPY Cargo.toml Cargo.lock ./
 # Copy the source code
 COPY src ./src
 
+# Set Rocket environment to production
+ENV ROCKET_ENV=production
+
 # Install dependencies and build the application
 RUN cargo build --release
+
+# Expose the port that Rocket will run on
+EXPOSE 8000
 
 # Set the entry point for the container
 CMD ["./target/release/online_llm"]
