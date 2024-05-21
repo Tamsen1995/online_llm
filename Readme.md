@@ -75,6 +75,8 @@ online_llm/
    docker-compose up
    ```
 
+   When running the application with docker-compose up, the health check endpoint is hit every 30 seconds. You should see the OK log in the terminal in which you launched the app.
+
 3. **Verify the application is running**:
 
    - Check the Docker container logs to ensure the Rocket server is running:
@@ -82,6 +84,14 @@ online_llm/
      docker-compose logs
      ```
    - You should see `Rocket has launched from http://0.0.0.0:8000`.
+
+## Running without Docker Compose
+
+If you want to run the application without Docker Compose, you can use the run.sh script that is included in the repository. To do this, simply run the following command:
+
+```sh
+./run.sh
+```
 
 ## Health Check
 
