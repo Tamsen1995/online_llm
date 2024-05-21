@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a RESTful, OpenAI-compatible API built using Rust. It's designed to integrate with any Large Language Model (LLM) from openAI you input into it, providing flexibility. The application utilizes Docker and Docker Compose for easy deployment and scalability. It also features SerpApi for web scraping to enhance the context provided to the language model. The design prioritizes scalability, security, and ease of deployment.
+This project is a RESTful, OpenAI-compatible API built using Rust. It's designed to integrate with any Large Language Model (LLM) from openAI you input into it, providing flexibility. The application utilizes Docker and Docker Compose for easy deployment and scalability. It also features SerpApi for web scraping to enhance the context provided to the language model. The design prioritizes scalability and ease of deployment.
 
 ## Features
 
