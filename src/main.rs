@@ -14,9 +14,10 @@ fn health_check() -> &'static str {
     "OK"
 }
 
+
 #[launch]
 fn rocket() -> _ {
     init();
     rocket::build()
-        .mount("/", routes![api::chat_completions, health_check])
+        .mount("/", routes![api::index, api::chat_completions, health_check])
 }

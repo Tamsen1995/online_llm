@@ -20,6 +20,13 @@ fn extract_keywords(query: &str) -> Option<String> {
     }
 }
 
+
+#[get("/")]
+pub fn index() -> &'static str {
+    "Hello, world!"
+}
+
+
 #[post("/chat/completions", format = "json", data = "<chat_request>")]
 pub async fn chat_completions(chat_request: Json<ChatRequest>) -> Result<Json<ChatResponse>, status::Custom<String>> {
     
