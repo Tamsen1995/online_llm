@@ -8,6 +8,7 @@ services:
     environment:
       OPENAI_API_KEY: ${OPENAI_API_KEY}
       SERPAPI_API_KEY: ${SERPAPI_API_KEY}
+      PORT: 8000
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:8000/health']
       interval: 30s
