@@ -105,14 +105,36 @@ curl http://localhost:8000/health
 
 This should return `OK` if the application is running correctly.
 
-## Contributions
+## Deployment to Heroku
 
-Contributions are welcome! Please fork the repository and create a pull request with your changes.
+This repository includes a script for deploying the application to Heroku using the Heroku Container Registry. The script is named `deploy.sh`.
+
+### Prerequisites
+
+- Docker
+- Heroku CLI
+- Heroku account
+
+### Environment Variables
+
+Before running the script, you need to set the following environment variables:
+
+- `HEROKU_API_KEY`: Your Heroku API key. You can get this from your Heroku account settings.
+- `HEROKU_APP_NAME`: The name of your Heroku app. This is the name you chose when you created the app on Heroku.
+
+You can set these environment variables in your shell like this:
+
+```sh
+export HEROKU_API_KEY=your_heroku_api_key_here
+export HEROKU_APP_NAME=your_heroku_app_name_here
+```
+
+Running the Script
+
+```sh
+./deploy.sh
+```
 
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
-
----
-
-This README provides a comprehensive overview of the project, setup instructions, and deployment steps. You can modify it as needed to fit your project's specifics and include any additional details you think are necessary.
