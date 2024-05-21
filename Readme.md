@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a RESTful, OpenAI-compatible API built using Rust. It's designed to integrate with any Large Language Model (LLM) from openAI you input into it, providing flexibility. The application utilizes Docker and Docker Compose for easy deployment and scalability. It also features SerpApi for web scraping to enhance the context provided to the language model. The design prioritizes scalability and ease of deployment.
+This project is a RESTful, OpenAI-compatible API built using Rust. It's designed to integrate with any Large Language Model (LLM) from OpenAI you input into it, providing flexibility. The application utilizes Docker and Docker Compose for easy deployment and scalability. It also features SerpApi for web scraping to enhance the context provided to the language model. The design prioritizes scalability and ease of deployment.
 
 ## Features
 
@@ -28,6 +28,8 @@ online_llm/
 │   ├── models.rs
 │   ├── openai_client.rs
 │   └── serpapi_client.rs
+├── tests/
+│   └── integration_tests.rs
 └── README.md
 ```
 
@@ -45,6 +47,8 @@ online_llm/
   - **models.rs**: Data models for the application.
   - **openai_client.rs**: Integrates with OpenAI's API.
   - **serpapi_client.rs**: Integrates with SerpApi for web scraping.
+- **tests/**: Directory containing integration tests.
+  - **integration_tests.rs**: Contains integration tests for the application.
 
 ## Setup and Running Locally
 
@@ -105,6 +109,16 @@ curl http://localhost:8000/health
 
 This should return `OK` if the application is running correctly.
 
+## Running Tests
+
+To ensure the application is functioning as expected, you can run the tests included in the project. The tests are located in the `tests/integration_tests.rs` file.
+
+Run the tests using the following command:
+
+```sh
+cargo test
+```
+
 ## Deployment to Heroku
 
 This repository includes a script for deploying the application to Heroku using the Heroku Container Registry. The script is named `deploy.sh`.
@@ -129,7 +143,7 @@ export HEROKU_API_KEY=your_heroku_api_key_here
 export HEROKU_APP_NAME=your_heroku_app_name_here
 ```
 
-Running the Script
+### Running the Script
 
 ```sh
 ./deploy.sh
