@@ -11,8 +11,3 @@ pub struct Message {
     pub role: String,
     pub content: String,
 }
-
-#[derive(Serialize)]
-pub struct ChatResponse {
-    pub response: String,
-}
