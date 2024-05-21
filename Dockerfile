@@ -13,6 +13,9 @@ COPY Cargo.toml Cargo.lock ./
 # Copy the source code
 COPY src ./src
 
+# Set Rocket environment to production
+ENV ROCKET_ENV=production
+
 # Install dependencies and build the application
 RUN cargo build --release
 
