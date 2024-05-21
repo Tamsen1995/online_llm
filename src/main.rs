@@ -9,12 +9,7 @@ mod config;
 use config::init;
 use std::env;
 use rocket::config::Config;
-
-#[get("/health")]
-fn health_check() -> &'static str {
-    println!("OK");
-    "OK"
-}
+use online_llm::health_check; // Import from lib.rs
 
 #[launch]
 fn rocket() -> _ {
