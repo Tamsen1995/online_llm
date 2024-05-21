@@ -21,7 +21,13 @@ fn extract_keywords(query: &str) -> Option<String> {
 
 #[get("/")]
 pub fn index() -> &'static str {
-    "This online llm works and returns the response from openAI!"
+    "This online llm works and returns responses!"
+}
+
+#[get("/health")]
+pub fn health_check() -> &'static str {
+    println!("OK");
+    "OK"
 }
 
 #[post("/chat/completions", format = "json", data = "<chat_request>")]
